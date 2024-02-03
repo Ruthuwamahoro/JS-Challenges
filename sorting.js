@@ -1,4 +1,5 @@
-function isPrime(num) {
+function primeNumber(num) {
+    //checking if the number is less than 1 or not a numeric value, return false.
     if (num <= 1) {
         return false;
     }
@@ -10,28 +11,30 @@ function isPrime(num) {
     return true;
 }
 
-function customSort(array) {
-    const n = array.length;
-
+//function to sort an array in descending
+function sortInDescendingOrder(arr) {
+    const n = arr.length;
+    //looping through the array
+    let rever;
     for (let i = 0; i < n; i++) {
         for (let j = 0; j < n - 1 - i; j++) {
-            if (array[j] < array[j + 1]) {
-                const temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+            if (arr[j] < arr[j + 1]) {
+                const rever = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = rever;
             }
         }
     }
 
-    for (let i = array.length - 1; i >= 0; i--) {
-        if (isPrime(array[i])) {
-            array.splice(i, 1);
+    for (let i = arr.length - 1; i >= 0; i--) {
+        if (primeNumber(arr[i])) {
+            arr.splice(i, 1);
         }
     }
 
-    return array;
+    return arr;
 }
 
-const inputArray = [3, 4, 7,10, 3, 0, 17,12];
-const sortedArray = customSort(inputArray);
+const inputArray = [3, 4,23, 7,10, 3,24, 0, 17,12,14];
+const sortedArray = sortInDescendingOrder(inputArray);
 console.log(sortedArray)
